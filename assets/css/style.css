@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+.fighter {
+    width: 150px;
+    padding: 10px;
+}
