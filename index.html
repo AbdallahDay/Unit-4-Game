@@ -5,20 +5,106 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Memeland RPG</title>
+        <title>Pokemon RPG</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     </head>
 
     <body>
-        <h1>Memeland RPG</h1>
-        <h2>Choose your fighter</h2>
-        <div>
-            <img class="fighter" src="assets/images/long-legs.jpg">
-            <img class="fighter" src="assets/images/wtf.jpg">
-            <img class="fighter" src="assets/images/fighter.jpg">
-            <img class="fighter" src="assets/images/kick-boi.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img id="logo" src="assets/images/pokemon-logo.png"><h1 id="title">RPG</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h2 id="choose-pokemon">Choose a pokemon</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="pokemonSelection" class="container">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div id="pikachu" class="card pokemon-item">
+                                            <div class="card-img-top pokemon-img-container">
+                                                <div class="wrapper">
+                                                    <img class="pokemon-img" src="assets/images/pikachu.png">
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Pikachu</h5>
+                                                <h6 class="hp-label">HP: </h6><span class="hp-value"></span>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div id="charmander" class="card pokemon-item">
+                                            <div class="card-img-top pokemon-img-container">
+                                                <div class="wrapper">
+                                                    <img class="pokemon-img" src="assets/images/charmander.png">                                            
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Charmander</h5>
+                                                <h6 class="hp-label">HP: </h6><span class="hp-value"></span>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div id="bulbasaur" class="card pokemon-item">
+                                            <div class="card-img-top pokemon-img-container">
+                                                <div class="wrapper">
+                                                    <img class="pokemon-img" src="assets/images/bulbasaur.png">
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Bulbasaur</h5>
+                                                <h6 class="hp-label">HP: </h6><span class="hp-value"></span>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="col-12 col-sm-6 col-lg-3">
+                                        <div id="squirtle" class="card pokemon-item">
+                                            <div class="card-img-top pokemon-img-container">
+                                                <div class="wrapper">
+                                                    <img class="pokemon-img" src="assets/images/squirtle.png">
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Squirtle</h5>
+                                                <h6 class="hp-label">HP: </h6><span class="hp-value"></span>
+                                            </div>
+                                        </div>                                         
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col">
+                                        <a id="start-button" class="btn btn-primary disabled" href="">Battle Start!</a>
+                                    </div>
+
+                                </div>
+
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <script src="game.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="assets/javascript/game.js"></script>
     </body>
 </html>

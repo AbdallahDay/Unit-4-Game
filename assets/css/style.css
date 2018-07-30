@@ -2,7 +2,71 @@
     box-sizing: border-box;
 }
 
-.fighter {
-    width: 150px;
-    padding: 10px;
+.container {
+    text-align: center;
 }
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#logo {
+    display: inline-block;
+    height: 100px;
+}
+
+#title {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+#title, #logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pokemon-item {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pokemon-item.selected {
+    background-color: green;
+}
+
+.pokemon-item.unselected {
+    background-color: red;
+}
+
+    .pokemon-img-container {
+        margin: 10px 0;
+        width: 100%;
+        height: 150px;
+        position: relative;
+    }
+
+        .pokemon-img-container .wrapper {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+            .pokemon-img {
+                display: inline;
+                max-width: 150px;
+                max-height: 150px;
+                vertical-align: bottom;
+            }
+
+            .hp-label {
+                display: inline;
+            }
+
+    .pokemon-item .card-body {
+        padding: 10px 0;
+    }
