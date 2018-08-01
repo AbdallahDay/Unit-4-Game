@@ -38,22 +38,37 @@ var game = {
         if (this.defenderPokemon.hp > this.playerPokemon.ap) {
             this.defenderPokemon.hp -= this.playerPokemon.ap;
         } else {
+            //Win!
             this.defenderPokemon.hp = 0;
-            //TODO: win! choose next enemy
+
+            fightInProgress = false;
+            
+            $("#attack-log").append(`<b>${this.playerPokemon.name} defeated ${this.defenderPokemon.name}!</b>`);
+
+            $(`#${this.defenderPokemon.name}`).remove();
+
+            if (!$(".enemy-select")[0]) {
+                //no more enemies to choose from
+                alert("Congratulations! You've defeated all your enemies! Refresh to try again with a different Pokemon!");
+            }
         }
 
-        $(`#${this.playerPokemon.name}-hp`).text(this.playerPokemon.hp);
-        $("#attack-log").append(`<p class="log-item">${this.playerPokemon.name} attacked ${this.defenderPokemon.name} for ${this.playerPokemon.ap} dmg!</p>`);
-        
-        if (this.playerPokemon.hp > this.defenderPokemon.ap) {
-            this.playerPokemon.hp -= this.defenderPokemon.ap;
-        } else {
-            this.playerPokemon.hp = 0;
-            //TODO: GAME OVER
-        }
+        if (fightInProgress) {
+            $(`#${this.defenderPokemon.name}-hp`).text(this.defenderPokemon.hp);
+            $("#attack-log").append(`<p class="log-item">${this.defenderPokemon.name} counter-attacked ${this.playerPokemon.name} for ${this.defenderPokemon.ap} dmg!</p>`);
+            
+            if (this.playerPokemon.hp > this.defenderPokemon.ca) {
+                this.playerPokemon.hp -= this.defenderPokemon.ca;
+            } else {
+                this.playerPokemon.hp = 0;
+                
+                //GAME OVER
+                alert("GAME OVER! Refresh and try again!")
+            }
 
-        $(`#${this.defenderPokemon.name}-hp`).text(this.defenderPokemon.hp);
-        $("#attack-log").append(`<p class="log-item">${this.defenderPokemon.name} counter-attacked ${this.playerPokemon.name} for ${this.defenderPokemon.ap} dmg!</p>`);
+            $(`#${this.playerPokemon.name}-hp`).text(this.playerPokemon.hp);
+            $("#attack-log").append(`<p class="log-item">${this.playerPokemon.name} attacked ${this.defenderPokemon.name} for ${this.playerPokemon.ap} dmg!</p>`);            
+        }
 
         this.playerPokemon.ap += this.baseAP;
     },
