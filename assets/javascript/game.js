@@ -3,6 +3,7 @@ var fightInProgress = false;
 var game = {
     playerPokemon,
     defenderPokemon,
+    baseAP: 0,
 
     pokemonList: [
         { name: "Pikachu", img: "assets/images/pikachu.png", hp: 100, ap: 7, ca: 10 },
@@ -25,7 +26,7 @@ var game = {
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${p.name}</h5>
-                    <h6 class="hp-label">HP: ${String(p.hp)}</h6>
+                    <h6 class="hp-label">HP: </h6><span id="${p.name}-hp">${String(p.hp)}</span>
                 </div>
             </div>`;
 
@@ -34,7 +35,27 @@ var game = {
     },
 
     Attack: function() {
+        if (this.defenderPokemon.hp > this.playerPokemon.ap) {
+            this.defenderPokemon.hp -= this.playerPokemon.ap;
+        } else {
+            this.defenderPokemon.hp = 0;
+            //TODO: win! choose next enemy
+        }
 
+        $(`#${this.playerPokemon.name}-hp`).text(this.playerPokemon.hp);
+        $("#attack-log").append(`<p class="log-item">${this.playerPokemon.name} attacked ${this.defenderPokemon.name} for ${this.playerPokemon.ap} dmg!</p>`);
+        
+        if (this.playerPokemon.hp > this.defenderPokemon.ap) {
+            this.playerPokemon.hp -= this.defenderPokemon.ap;
+        } else {
+            this.playerPokemon.hp = 0;
+            //TODO: GAME OVER
+        }
+
+        $(`#${this.defenderPokemon.name}-hp`).text(this.defenderPokemon.hp);
+        $("#attack-log").append(`<p class="log-item">${this.defenderPokemon.name} counter-attacked ${this.playerPokemon.name} for ${this.defenderPokemon.ap} dmg!</p>`);
+
+        this.playerPokemon.ap += this.baseAP;
     },
 
     SetPlayerPokemon: function(id) {
@@ -46,6 +67,8 @@ var game = {
                 console.log(this.playerPokemon);
             }
         }
+
+        this.baseAP = this.playerPokemon.ap;
     },
 
     SetDefenderPokemon: function(id) {
@@ -88,6 +111,6 @@ $(document).ready(function() {
     });
 
     $("#attack-btn").click(function () {
-        $("#attack-log").append(`<p class="log-item">${playerPokemon} attacked ${defenderPokemon} for ${rnd} dmg!</p>`);
+        game.Attack();
     });
 });
